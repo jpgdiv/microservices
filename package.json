@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "turbo": "^1.6.3"
+  },
+  "scripts": {
+    "start": "yarn start",
+    "build": "yarn build",
+    "lint": "tsc"
+  },
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ]
+}
