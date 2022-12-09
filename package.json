@@ -1,11 +1,18 @@
 {
   "devDependencies": {
-    "turbo": "^1.6.3"
+    "turbo": "^1.6.3",
+    "eslint-config-custom": "*",
+    "prettier": "latest"
+  },
+  "packageManager": "yarn@1.22.19",
+  "engines": {
+    "node": ">=14.0.0"
   },
   "scripts": {
-    "start": "yarn start",
-    "build": "yarn build",
-    "lint": "tsc"
+    "build": "turbo run build",
+    "start": "turbo run start --parallel",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "private": true,
   "workspaces": [
