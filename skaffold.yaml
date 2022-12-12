@@ -1,0 +1,58 @@
+apiVersion: skaffold/v2beta3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./apps/infra/k8s/*
+build:
+  local:
+    push: false
+  artifacts:
+    - image: peterhvw/blog-client
+      context: apps/client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.js'
+            dest: .
+    - image: peterhvw/blog-comments
+      context: apps/comments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
+    - image: peterhvw/blog-event-bus
+      context: apps/event-bus
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
+    - image: peterhvw/blog-moderation
+      context: apps/moderation
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
+    - image: peterhvw/blog-posts
+      context: apps/posts
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
+    - image: peterhvw/blog-query
+      context: apps/query
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.js'
+            dest: .
